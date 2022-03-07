@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'QuizzlerBrain.dart';
 
-void main() => runApp(Quizzler());
+void main() => runApp(const Quizzler());
 
 class Quizzler extends StatelessWidget {
+  const Quizzler({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.grey.shade900,
-        body: SafeArea(
+        body: const SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: QuizPage(),
           ),
         ),
@@ -20,24 +24,70 @@ class Quizzler extends StatelessWidget {
 }
 
 class QuizPage extends StatefulWidget {
+  const QuizPage({Key? key}) : super(key: key);
+
   @override
   _QuizPageState createState() => _QuizPageState();
 }
 
 class _QuizPageState extends State<QuizPage> {
+  List<Widget> scoreKeeper = [];
+
+  void checkAnswer (bool userAnswer){
+    setState(() {
+    if (quizzlerBrain.getQuestionAnswer() == userAnswer) {
+      scoreKeeper.add(Icon(
+        Icons.check,
+        color: Colors.green,
+      ),);
+    } else {
+      scoreKeeper.add(Icon(
+        Icons.close,
+        color : Colors.red,
+      ),);    }
+    if (!quizzlerBrain.isFinished()) {
+      quizzlerBrain.nextQuestion();
+    }
+    else {
+      quizzlerBrain.reset();
+      Alert(
+        context: context,
+        type: AlertType.success,
+        title: "GAME OVER",
+        desc: "You answered to all of the questions",
+        buttons: [
+          DialogButton(
+            child: Text(
+              "Play again",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: (){
+            scoreKeeper = [];
+            Navigator.pop(context);
+            },
+            width: 120,
+          )
+        ],
+      ).show();
+    }
+    });
+  }
+
+  QuizzlerBrain quizzlerBrain = QuizzlerBrain();
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        const Expanded(
+        Expanded(
           flex: 5,
-          child: const Padding(
-            padding: const EdgeInsets.all(10.0),
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
             child: Center(
-              child: const Text(
-                'This is where the question text will go.',
+              child: Text(
+                quizzlerBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -62,7 +112,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked true.
+                checkAnswer(true);
               },
             ),
           ),
@@ -83,11 +133,14 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
-              },
+                checkAnswer(false);
+              }
             ),
           ),
         ),
-        //TODO: Add a Row here as your score keeper
+        Row(
+          children: scoreKeeper,
+        ),
       ],
     );
   }

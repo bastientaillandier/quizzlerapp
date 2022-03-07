@@ -3,57 +3,57 @@ import 'question.dart';
 class QuizzlerBrain {
   int _questionNumber = 0;
 
-  List<Question> _questions = [
+  final List<Question> _questions = [
     Question(
-      q: 'Some cats are actually allergic to humans',
-      a: true,
+      questionText: 'Some cats are actually allergic to humans',
+      questionAnswer: true,
     ),
     Question(
-      q: 'You can lead a cow down stairs but not up stairs.',
-      a: false,
+      questionText: 'You can lead a cow down stairs but not up stairs.',
+      questionAnswer: false,
     ),
     Question(
-      q: 'Approximately one quarter of human bones are in the feet.',
-      a: true,
+      questionText: 'Approximately one quarter of human bones are in the feet.',
+      questionAnswer: true,
     ),
     Question(
-      q: 'A slug\'s blood is green.',
-      a: true,
+      questionText: 'A slug\'s blood is green.',
+      questionAnswer: true,
     ),
     Question(
-      q: 'Buzz Aldrin\'s mother\'s maiden name was \"Moon\".',
-      a: true,
+      questionText: 'Buzz Aldrin\'s mother\'s maiden name was "Moon".',
+      questionAnswer: true,
     ),
     Question(
-      q: 'It is illegal to pee in the Ocean in Portugal.',
-      a: true,
+      questionText: 'It is illegal to pee in the Ocean in Portugal.',
+      questionAnswer: true,
     ),
     Question(
-      q: 'No piece of square dry paper can be folded in half more than 7 times.',
-      a: false,
+      questionText: 'No piece of square dry paper can be folded in half more than 7 times.',
+      questionAnswer: false,
     ),
     Question(
-      q: 'In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.',
-      a: true,
+      questionText: 'In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.',
+      questionAnswer: true,
     ),
     Question(
-      q: 'The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.',
-      a: false,
+      questionText: 'The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.',
+      questionAnswer: false,
     ),
     Question(
-      q: 'The total surface area of two human lungs is approximately 70 square metres.',
-      a: true,
+      questionText: 'The total surface area of two human lungs is approximately 70 square metres.',
+      questionAnswer: true,
     ),
     Question(
-      q: 'Google was originally called \"Backrub\".',
-      a: true,
+      questionText: 'Google was originally called "Backrub".',
+      questionAnswer: true,
     ),
     Question(
-        q: 'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
-        a: true),
+        questionText: 'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
+        questionAnswer: true),
     Question(
-      q: 'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
-      a: true,
+      questionText: 'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
+      questionAnswer: true,
     ),
   ];
 

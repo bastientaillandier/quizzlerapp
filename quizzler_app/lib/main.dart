@@ -36,12 +36,12 @@ class _QuizPageState extends State<QuizPage> {
   void checkAnswer (bool userAnswer){
     setState(() {
     if (quizzlerBrain.getQuestionAnswer() == userAnswer) {
-      scoreKeeper.add(Icon(
+      scoreKeeper.add(const Icon(
         Icons.check,
         color: Colors.green,
       ),);
     } else {
-      scoreKeeper.add(Icon(
+      scoreKeeper.add(const Icon(
         Icons.close,
         color : Colors.red,
       ),);    }
@@ -57,7 +57,7 @@ class _QuizPageState extends State<QuizPage> {
         desc: "You answered to all of the questions",
         buttons: [
           DialogButton(
-            child: Text(
+            child: const Text(
               "Play again",
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
@@ -84,12 +84,12 @@ class _QuizPageState extends State<QuizPage> {
         Expanded(
           flex: 5,
           child: Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
                 quizzlerBrain.getQuestionText(),
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 25.0,
                   color: Colors.white,
                 ),

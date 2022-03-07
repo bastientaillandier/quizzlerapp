@@ -68,8 +68,8 @@ class _QuizPageState extends State<QuizPage> {
           )
         ],
       ).show();
+      scoreKeeper = [];
     }
-    scoreKeeper = [];
     });
   }
 

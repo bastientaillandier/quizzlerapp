@@ -62,7 +62,9 @@ class _QuizPageState extends State<QuizPage> {
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
             onPressed: (){
-            scoreKeeper = [];
+              setState(() {
+                scoreKeeper = [];
+              });
             Navigator.pop(context);
             },
             width: 120,
